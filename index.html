@@ -6,6 +6,8 @@
 <title>ProductEvol — AI Product Studio</title>
 <meta name="description" content="From one product photo to everything your store needs. ProductEvol turns product images into polished photos, scenes, ads, social content, descriptions and short videos.">
 <meta name="theme-color" content="#070914">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://productevol.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ProductEvol">
@@ -158,14 +160,187 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
   h1{font-size:clamp(42px,15vw,64px)}.section{padding:42px 0}.head{display:block}.head p{margin-top:14px}
   .tools,.grid3,.pricing{grid-template-columns:1fr}.tool.wide{grid-column:auto}.main{padding:14px}.panel-head{display:block}.model{display:inline-block;margin-top:12px}
 }
+
+/* ---------- ProductEvol final polish ---------- */
+:root{
+  --header-h:72px;
+}
+body{
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.navbar{
+  box-shadow:0 1px 0 rgba(255,255,255,.025);
+}
+.nav a,.btn,.tab,.tool,.pricecard,details{
+  -webkit-tap-highlight-color:transparent;
+}
+.hero{
+  padding:104px 0 84px;
+}
+.hero p{
+  max-width:790px;
+}
+.hero-note{
+  letter-spacing:.005em;
+}
+.section{
+  padding:68px 0;
+}
+.head{
+  margin-bottom:30px;
+}
+.tool{
+  min-height:228px;
+}
+.tool.wide{
+  min-height:238px;
+}
+.tool h3,.info h3,.pricecard h3{
+  text-wrap:balance;
+}
+.tool p,.info p,.head p,.panel-head p{
+  text-wrap:pretty;
+}
+.studio{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.014)),
+    rgba(10,13,26,.82);
+}
+.studio-top{
+  padding:20px 22px;
+}
+.main{
+  padding:26px;
+}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.018));
+}
+.upload{
+  transition:border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.upload:hover{
+  border-color:rgba(115,167,255,.5);
+  background:rgba(115,167,255,.025);
+}
+.result{
+  min-height:295px;
+}
+.pricecard{
+  min-height:360px;
+  display:flex;
+  flex-direction:column;
+}
+.pricecard .btn{
+  margin-top:auto;
+}
+.pricecard.pop{
+  box-shadow:0 22px 60px rgba(55,86,190,.14);
+}
+details{
+  transition:border-color .2s ease, background .2s ease;
+}
+details[open]{
+  border-color:rgba(115,167,255,.22);
+  background:rgba(115,167,255,.028);
+}
+summary{
+  list-style:none;
+  position:relative;
+  padding-right:28px;
+}
+summary::-webkit-details-marker{display:none}
+summary:after{
+  content:"+";
+  position:absolute;
+  right:2px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#9fb0cc;
+  font-size:20px;
+  font-weight:500;
+}
+details[open] summary:after{
+  content:"–";
+}
+.footer{
+  padding-top:34px;
+}
+@media (min-width:981px){
+  .head > div:first-child{max-width:56%}
+  .head p{max-width:44%}
+}
+@media(max-width:980px){
+  .hero{padding:82px 0 58px}
+  .section{padding:54px 0}
+  .tools{grid-template-columns:1fr 1fr}
+  .tool.wide{grid-column:1/-1}
+  .studio-body{min-height:0}
+  .sidebar{
+    position:sticky;
+    top:64px;
+    z-index:8;
+    background:rgba(10,13,26,.96);
+    backdrop-filter:blur(16px);
+    padding:10px;
+    scrollbar-width:none;
+  }
+  .sidebar::-webkit-scrollbar{display:none}
+  .tab{
+    min-width:max-content;
+    padding:11px 13px;
+  }
+}
+@media(max-width:720px){
+  :root{--header-h:64px}
+  .hero{padding:64px 0 44px}
+  .hero p{font-size:17px}
+  .hero-cta .btn{width:100%}
+  .hero-note{font-size:12px;line-height:1.55}
+  .section{padding:44px 0}
+  .head h2{font-size:clamp(31px,10vw,43px)}
+  .head p{font-size:15px}
+  .tools{grid-template-columns:1fr}
+  .tool,.tool.wide{min-height:0}
+  .studio-top{align-items:flex-start}
+  .studio-title small{font-size:12px}
+  .studio-body{display:block}
+  .sidebar{
+    top:64px;
+    display:flex;
+    overflow-x:auto;
+    overflow-y:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .main{padding:14px}
+  .panel-head h3{font-size:27px}
+  .workspace{grid-template-columns:1fr}
+  .upload{min-height:230px}
+  .result{min-height:230px}
+  .grid3,.pricing{grid-template-columns:1fr}
+  .pricecard{min-height:0}
+  .pricecard.pop{order:-1}
+  .footerrow{align-items:flex-start}
+  .footerlinks{gap:14px}
+}
+@media(max-width:430px){
+  .container{width:min(var(--max),calc(100% - 18px))}
+  .brand{gap:8px}
+  .brand .beta{display:none}
+  .actions .btn.primary.small{padding:0 13px}
+  .hero h1{font-size:clamp(40px,13.5vw,58px)}
+  .eyebrow{font-size:10px;letter-spacing:.075em}
+  .panel-head h3{font-size:25px}
+}
+
 </style>
 </head>
 <body>
 <header class="navbar">
   <div class="container nav">
     <a class="brand" href="#top"><span class="logo"></span><span>ProductEvol</span><span class="beta">Beta</span></a>
-    <nav class="navlinks"><a href="#tools">Tools</a><a href="#studio">Studio</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
-    <div class="actions"><button class="btn small ghost" id="accountBtn">Account</button><a class="btn primary small" href="#studio">Start creating</a></div>
+    <nav class="navlinks" aria-label="Primary navigation"><a href="#tools">Tools</a><a href="#studio">Studio</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <div class="actions"><button class="btn small ghost" id="accountBtn" aria-label="Open account">Account</button><a class="btn primary small" href="#studio">Start creating</a></div>
   </div>
 </header>
 
@@ -202,12 +377,12 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
 <div class="container">
   <div class="head">
     <div><div class="kicker">ProductEvol Studio</div><h2>All seven creation interfaces in one workspace.</h2></div>
-    <p>Each tool has its own inputs, settings, generation action and result area. API routes are already structured in the frontend for backend connection.</p>
+    <p>Each tool gives you a focused workflow with only the controls you need, so creating polished product content stays fast and clear.</p>
   </div>
   <div class="studio">
     <div class="studio-top">
-      <div class="studio-title"><span class="logo" style="width:34px;height:34px"></span><div><strong>ProductEvol Studio</strong><small>7 tools · Beta interface</small></div></div>
-      <div class="actions"><span class="tag" id="credits">Credits: —</span><button class="btn small" id="refresh">Refresh</button></div>
+      <div class="studio-title"><span class="logo" style="width:34px;height:34px"></span><div><strong>ProductEvol Studio</strong><small>7 creative tools</small></div></div>
+      <div class="actions"><span class="tag" id="credits">Credits: —</span><button class="btn small" id="refresh" aria-label="Refresh account credits">Refresh</button></div>
     </div>
     <div class="studio-body">
       <aside class="sidebar">
@@ -222,7 +397,7 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
       <div class="main">
 
         <section class="panel active" id="panel-enhance">
-          <div class="panel-head"><div><h3>Product Photo Enhance</h3><p>Improve clarity, light and presentation without changing the identity of the product.</p></div><span class="model">Enhancement API</span></div>
+          <div class="panel-head"><div><h3>Product Photo Enhance</h3><p>Improve clarity, light and presentation without changing the identity of the product.</p></div><span class="model">Photo Enhance</span></div>
           <div class="workspace">
             <div class="card"><h4>Source photo</h4><div class="upload" data-upload="enhance"><input type="file" accept="image/*" data-file="enhance"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload a product photo</strong><br><small>JPG, PNG or WEBP</small></div></div><button class="btn primary block" style="margin-top:14px" data-generate="enhance">Enhance product photo</button><div class="status" id="status-enhance"></div></div>
             <div class="settings"><div class="card"><h4>Settings</h4><label class="field">Upscale<select id="enhance-scale"><option value="2">2× — balanced</option><option value="4">4× — maximum detail</option></select></label><label class="field">Finish<select id="enhance-finish"><option value="natural">Natural</option><option value="crisp">Crisp commercial</option><option value="soft">Soft premium</option></select></label></div><div class="card"><h4>Result</h4><div class="result" id="result-enhance">Your enhanced image will appear here.</div></div></div>
@@ -230,7 +405,7 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
         </section>
 
         <section class="panel" id="panel-background">
-          <div class="panel-head"><div><h3>Background Change</h3><p>Remove the original background and replace it with a cleaner commercial presentation.</p></div><span class="model">Cutout + Edit API</span></div>
+          <div class="panel-head"><div><h3>Background Change</h3><p>Remove the original background and replace it with a cleaner commercial presentation.</p></div><span class="model">Background Studio</span></div>
           <div class="workspace">
             <div class="card"><h4>Product image</h4><div class="upload" data-upload="background"><input type="file" accept="image/*" data-file="background"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload product image</strong></div></div><button class="btn primary block" style="margin-top:14px" data-generate="background">Change background</button><div class="status" id="status-background"></div></div>
             <div class="settings"><div class="card"><h4>Background</h4><label class="field">Mode<select id="background-mode"><option value="white">Clean white studio</option><option value="transparent">Transparent</option><option value="color">Solid color</option><option value="custom">Custom prompt</option></select></label><label class="field">Custom prompt<textarea id="background-prompt" placeholder="Warm beige studio backdrop, soft floor shadow..."></textarea></label></div><div class="card"><h4>Result</h4><div class="result" id="result-background">Your new background will appear here.</div></div></div>
@@ -238,7 +413,7 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
         </section>
 
         <section class="panel" id="panel-scene">
-          <div class="panel-head"><div><h3>Product Scene Creator</h3><p>Build studio, lifestyle or seasonal environments around the real product.</p></div><span class="model">Product Edit API</span></div>
+          <div class="panel-head"><div><h3>Product Scene Creator</h3><p>Build studio, lifestyle or seasonal environments around the real product.</p></div><span class="model">Scene Studio</span></div>
           <div class="workspace">
             <div class="card"><h4>Product image</h4><div class="upload" data-upload="scene"><input type="file" accept="image/*" data-file="scene"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload the product</strong></div></div><button class="btn primary block" style="margin-top:14px" data-generate="scene">Create product scene</button><div class="status" id="status-scene"></div></div>
             <div class="settings"><div class="card"><h4>Scene direction</h4><label class="field">Style<select id="scene-style"><option>Premium studio</option><option>Lifestyle</option><option>Minimal editorial</option><option>Seasonal campaign</option><option>Luxury campaign</option></select></label><label class="field">Scene prompt<textarea id="scene-prompt" placeholder="On a pale stone pedestal, soft morning side light..."></textarea></label><label class="field">Aspect ratio<select id="scene-ratio"><option>1:1</option><option>4:5</option><option>3:2</option><option>16:9</option></select></label></div><div class="card"><h4>Result</h4><div class="result" id="result-scene">Your product scene will appear here.</div></div></div>
@@ -246,7 +421,7 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
         </section>
 
         <section class="panel" id="panel-ad">
-          <div class="panel-head"><div><h3>Product Ad Image Creator</h3><p>Create polished promotional compositions with headline and offer space.</p></div><span class="model">Campaign Image API</span></div>
+          <div class="panel-head"><div><h3>Product Ad Image Creator</h3><p>Create polished promotional compositions with headline and offer space.</p></div><span class="model">Ad Studio</span></div>
           <div class="workspace">
             <div class="card"><h4>Product image</h4><div class="upload" data-upload="ad"><input type="file" accept="image/*" data-file="ad"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload product image</strong></div></div><button class="btn primary block" style="margin-top:14px" data-generate="ad">Create ad image</button><div class="status" id="status-ad"></div></div>
             <div class="settings"><div class="card"><h4>Campaign</h4><label class="field">Goal<select id="ad-goal"><option>New product launch</option><option>Sale / offer</option><option>Premium brand</option><option>Seasonal promotion</option><option>Feature highlight</option></select></label><label class="field">Headline<input id="ad-headline" placeholder="Designed for everyday movement"></label><label class="field">Offer<input id="ad-offer" placeholder="Launch week · 20% off"></label><label class="field">Format<select id="ad-ratio"><option>4:5</option><option>1:1</option><option>16:9</option><option>9:16</option></select></label></div><div class="card"><h4>Result</h4><div class="result" id="result-ad">Your campaign visual will appear here.</div></div></div>
@@ -254,7 +429,7 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
         </section>
 
         <section class="panel" id="panel-social">
-          <div class="panel-head"><div><h3>Social Post Creator</h3><p>Turn a product into social-ready creative in channel-appropriate dimensions.</p></div><span class="model">Social Creative API</span></div>
+          <div class="panel-head"><div><h3>Social Post Creator</h3><p>Turn a product into social-ready creative in channel-appropriate dimensions.</p></div><span class="model">Social Studio</span></div>
           <div class="workspace">
             <div class="card"><h4>Product image</h4><div class="upload" data-upload="social"><input type="file" accept="image/*" data-file="social"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload product image</strong></div></div><button class="btn primary block" style="margin-top:14px" data-generate="social">Create social post</button><div class="status" id="status-social"></div></div>
             <div class="settings"><div class="card"><h4>Social settings</h4><label class="field">Platform<select id="social-platform"><option>Instagram post</option><option>Instagram story</option><option>TikTok / Reels cover</option><option>Pinterest</option><option>Facebook</option></select></label><label class="field">Visual direction<select id="social-style"><option>Clean product focus</option><option>Bold promotional</option><option>Lifestyle editorial</option><option>Minimal luxury</option><option>Playful</option></select></label><label class="field">Message<textarea id="social-message" placeholder="New color just dropped. Lightweight, everyday, effortless."></textarea></label></div><div class="card"><h4>Result</h4><div class="result" id="result-social">Your social creative will appear here.</div></div></div>
@@ -262,7 +437,7 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
         </section>
 
         <section class="panel" id="panel-copy">
-          <div class="panel-head"><div><h3>Product Description Generator</h3><p>Create listing copy from factual product information without inventing unsupported claims.</p></div><span class="model">Text API</span></div>
+          <div class="panel-head"><div><h3>Product Description Generator</h3><p>Create listing copy from factual product information without inventing unsupported claims.</p></div><span class="model">Listing Copy</span></div>
           <div class="workspace">
             <div class="card"><h4>Product details</h4><div class="settings"><label class="field">Product name<input id="copy-name" placeholder="Everyday Canvas Tote"></label><label class="field">What is it?<textarea id="copy-details" placeholder="Material, size, color, features, use, care instructions..."></textarea></label><label class="field">Target customer<input id="copy-audience" placeholder="Commuters, students and everyday shoppers"></label><label class="field">Tone<select id="copy-tone"><option>Clear and premium</option><option>Friendly</option><option>Minimal</option><option>Luxury</option><option>Playful</option></select></label><label class="field">Output<select id="copy-output"><option>Full listing pack</option><option>Title only</option><option>Description only</option><option>5 bullets</option><option>SEO title + meta description</option></select></label></div><button class="btn primary block" style="margin-top:14px" data-generate="copy">Generate product copy</button><div class="status" id="status-copy"></div></div>
             <div class="card"><h4>Generated copy</h4><div class="result" id="result-copy"><div class="output-text">Your generated title, bullets, description and SEO copy will appear here.</div></div></div>
@@ -270,7 +445,7 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
         </section>
 
         <section class="panel" id="panel-video">
-          <div class="panel-head"><div><h3>Product-to-Short-Video</h3><p>Animate a product image into a short controlled motion asset for ads and social content.</p></div><span class="model">Image-to-Video API</span></div>
+          <div class="panel-head"><div><h3>Product-to-Short-Video</h3><p>Animate a product image into a short controlled motion asset for ads and social content.</p></div><span class="model">Short Video</span></div>
           <div class="workspace">
             <div class="card"><h4>Product image</h4><div class="upload" data-upload="video"><input type="file" accept="image/*" data-file="video"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload product image</strong></div></div><button class="btn primary block" style="margin-top:14px" data-generate="video">Create short video</button><div class="status" id="status-video"></div></div>
             <div class="settings"><div class="card"><h4>Motion</h4><label class="field">Duration<select id="video-duration"><option value="5">5 seconds</option><option value="10">10 seconds</option></select></label><label class="field">Motion style<select id="video-style"><option>Slow premium camera move</option><option>360-style product reveal</option><option>Soft push-in</option><option>Dynamic social ad</option><option>Floating studio reveal</option></select></label><label class="field">Motion prompt<textarea id="video-prompt" placeholder="Slow camera orbit, subtle product rotation, soft studio light..."></textarea></label><label class="field">Format<select id="video-ratio"><option>9:16</option><option>1:1</option><option>16:9</option></select></label></div><div class="card"><h4>Result</h4><div class="result" id="result-video">Your short product video will appear here.</div></div></div>
@@ -280,7 +455,7 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
       </div>
     </div>
   </div>
-  <div class="notice"><strong>Backend connection note:</strong> this file contains the complete ProductEvol Beta frontend and all seven interfaces. The generation buttons are wired to ProductEvol-specific API paths. Those server routes still need to exist and point to the selected production models before real AI generation can work.</div>
+  
 </div>
 </section>
 
@@ -308,10 +483,10 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
 
 <section class="section" id="pricing">
 <div class="container">
-  <div class="head"><div><div class="kicker">Beta credit packs</div><h2>Simple one-time credit packs.</h2></div><p>The pricing structure matches the existing Evol credit-pack approach and can be connected to ProductEvol checkout once the live merchant configuration is ready.</p></div>
+  <div class="head"><div><div class="kicker">Beta credit packs</div><h2>Simple one-time credit packs.</h2></div><p>Choose a simple one-time credit pack and use your credits across all seven ProductEvol tools.</p></div>
   <div class="pricing">
     <div class="pricecard"><h3>Starter</h3><div class="price">€4.99 <small>one time</small></div><p>For trying a few ProductEvol workflows.</p><ul><li>20 credits</li><li>Access to all 7 tools</li><li>Download finished assets</li></ul><button class="btn block" data-buy="starter">Buy Starter</button></div>
-    <div class="pricecard pop"><span class="tag">Most flexible</span><h3 style="margin-top:13px">Creator</h3><div class="price">€11.99 <small>one time</small></div><p>For sellers creating content regularly.</p><ul><li>60 credits</li><li>Access to all 7 tools</li><li>Better value per credit</li></ul><button class="btn primary block" data-buy="creator">Buy Creator</button></div>
+    <div class="pricecard pop"><span class="tag">Best value</span><h3 style="margin-top:13px">Creator</h3><div class="price">€11.99 <small>one time</small></div><p>For sellers creating content regularly.</p><ul><li>60 credits</li><li>Access to all 7 tools</li><li>Better value per credit</li></ul><button class="btn primary block" data-buy="creator">Buy Creator</button></div>
     <div class="pricecard"><h3>Studio</h3><div class="price">€24.99 <small>one time</small></div><p>For stores with a larger content workload.</p><ul><li>150 credits</li><li>Access to all 7 tools</li><li>Best value per credit</li></ul><button class="btn block" data-buy="studio">Buy Studio</button></div>
   </div>
 </div>
@@ -325,7 +500,7 @@ summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft
     <details><summary>Who is the beta for?</summary><p>Independent sellers, small brands and creators who need polished product content without a complicated stack of separate creative tools.</p></details>
     <details><summary>Will ProductEvol always preserve the exact product?</summary><p>AI generation can sometimes alter visual details. ProductEvol should prioritize product fidelity, but every generated asset should be reviewed before publishing.</p></details>
     <details><summary>Can I use the output commercially?</summary><p>Commercial-use wording should be synchronized with the final Terms of Service and the production model providers actually connected to the live service.</p></details>
-    <details><summary>What does Beta mean?</summary><p>The studio is usable while model selection, pricing, quality and workflows may still be refined based on reliability and user feedback.</p></details>
+    <details><summary>What does Beta mean?</summary><p>Beta means ProductEvol is actively improving. Core workflows are available now, while quality, speed and product features may continue to evolve.</p></details>
   </div>
 </div>
 </section>
@@ -410,4 +585,4 @@ $$("[data-buy]").forEach(b=>b.onclick=async()=>{const old=b.textContent;b.disabl
 $("#year").textContent=new Date().getFullYear();loadAccount();
 </script>
 </body>
-                                                                                                                                                                                                                                                                                                                                    </html>
+</html>

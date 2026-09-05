@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ProductEvol — AI Product Studio</title>
+<meta name="description" content="From one product photo to everything your store needs. ProductEvol turns product images into polished photos, scenes, ads, social content, descriptions and short videos.">
+<meta name="theme-color" content="#070914">
+<link rel="canonical" href="https://productevol.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ProductEvol">
+<meta property="og:title" content="ProductEvol — AI Product Studio">
+<meta property="og:description" content="From one product photo to everything your store needs.">
+<meta property="og:url" content="https://productevol.com/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+  --bg:#070914;--bg2:#0b0f1d;--panel:#101626;--panel2:#131b2f;
+  --text:#f7f9ff;--soft:#b5bfd4;--muted:#7f8ba6;--line:rgba(255,255,255,.09);
+  --purple:#a88cff;--blue:#73a7ff;--cyan:#48d6e8;--green:#62ddb0;
+  --grad:linear-gradient(135deg,#b69cff 0%,#7da8ff 48%,#48d6e8 100%);
+  --shadow:0 28px 90px rgba(0,0,0,.35);--r:22px;--max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 12% -8%,rgba(168,140,255,.20),transparent 34%),
+    radial-gradient(circle at 88% 0%,rgba(72,214,232,.12),transparent 28%),
+    linear-gradient(180deg,#070914 0%,#090c18 55%,#070914 100%);
+}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(var(--max),calc(100% - 32px));margin:auto}
+.navbar{
+  position:sticky;top:0;z-index:100;background:rgba(7,9,20,.80);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line)
+}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.025em}
+.logo{
+  width:37px;height:37px;border-radius:12px;background:var(--grad);position:relative;
+  box-shadow:0 12px 32px rgba(115,167,255,.28)
+}
+.logo:before{content:"";position:absolute;inset:8px;border:2px solid white;border-radius:7px;border-right-color:transparent;transform:rotate(-12deg)}
+.beta{font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(168,140,255,.38);background:rgba(168,140,255,.12);padding:4px 7px;border-radius:999px;color:#e1ddff}
+.navlinks{display:flex;gap:24px;color:var(--soft);font-size:14px}
+.navlinks a:hover{color:white}
+.actions{display:flex;gap:9px;align-items:center}
+.btn{
+  border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.045);color:white;
+  min-height:44px;padding:0 17px;border-radius:13px;font-weight:760;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  transition:.2s ease
+}
+.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.07)}
+.btn.primary{border:0;color:#07111c;background:var(--grad);box-shadow:0 14px 36px rgba(115,167,255,.22)}
+.btn.small{min-height:38px;padding:0 13px;font-size:13px}
+.btn.block{width:100%}
+.hero{padding:90px 0 62px;text-align:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid rgba(115,167,255,.22);
+  background:rgba(115,167,255,.07);border-radius:999px;font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:#cad7ef;font-weight:800
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px rgba(98,221,176,.7)}
+h1{margin:22px auto 18px;font-size:clamp(48px,8vw,84px);line-height:.98;letter-spacing:-.065em}
+.gradient{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:760px;margin:auto;color:var(--soft);font-size:clamp(16px,2vw,20px);line-height:1.68}
+.hero-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:29px}
+.hero-note{margin-top:18px;color:var(--muted);font-size:13px}
+.section{padding:56px 0}
+.head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:25px}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#9badcf;font-weight:850}
+.head h2{margin:7px 0 0;font-size:clamp(31px,4vw,49px);letter-spacing:-.045em}
+.head p{max-width:580px;color:var(--soft);line-height:1.7;margin:0}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.tool{
+  position:relative;min-height:220px;padding:20px;border:1px solid var(--line);border-radius:20px;
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.025));transition:.2s ease
+}
+.tool:hover{transform:translateY(-3px);border-color:rgba(115,167,255,.26);box-shadow:0 16px 48px rgba(0,0,0,.18)}
+.tool.wide{grid-column:span 2;background:linear-gradient(145deg,rgba(168,140,255,.10),rgba(72,214,232,.05))}
+.icon{width:44px;height:44px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.055);display:grid;place-items:center;font-size:20px}
+.tool h3{font-size:20px;margin:18px 0 8px;letter-spacing:-.02em}
+.tool p{color:var(--soft);font-size:14px;line-height:1.62;margin:0;max-width:430px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.tag{font-size:11px;color:#aebad3;border:1px solid var(--line);padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.03)}
+.arrow{position:absolute;right:18px;top:18px;width:35px;height:35px;border:1px solid var(--line);border-radius:11px;display:grid;place-items:center}
+.studio{
+  border:1px solid var(--line);border-radius:26px;overflow:hidden;background:rgba(10,13,26,.75);box-shadow:var(--shadow)
+}
+.studio-top{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px;border-bottom:1px solid var(--line)}
+.studio-title{display:flex;align-items:center;gap:12px}
+.studio-title small{display:block;color:var(--muted);margin-top:2px}
+.studio-body{display:grid;grid-template-columns:282px 1fr;min-height:690px}
+.sidebar{padding:14px;border-right:1px solid var(--line);background:rgba(255,255,255,.015)}
+.tab{
+  width:100%;display:flex;align-items:center;gap:10px;padding:12px;border-radius:13px;border:1px solid transparent;
+  background:transparent;color:#b6bfd2;text-align:left;margin:3px 0
+}
+.tab:hover{background:rgba(255,255,255,.035);color:white}
+.tab.active{background:rgba(115,167,255,.09);border-color:rgba(115,167,255,.18);color:white}
+.tabico{width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.055);display:grid;place-items:center}
+.main{padding:22px}
+.panel{display:none}.panel.active{display:block}
+.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:20px}
+.panel-head h3{font-size:29px;letter-spacing:-.04em;margin:0 0 7px}
+.panel-head p{color:var(--soft);line-height:1.65;margin:0;max-width:670px}
+.model{font-size:11px;color:#acb9d1;padding:7px 9px;border:1px solid var(--line);border-radius:999px;white-space:nowrap}
+.workspace{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(290px,.8fr);gap:18px}
+.card{padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.026)}
+.card h4{margin:0 0 12px;font-size:14px}
+.upload{
+  min-height:275px;position:relative;border:1px dashed rgba(151,168,202,.34);border-radius:17px;
+  display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:18px
+}
+.upload input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.placeholder{color:var(--soft)}.placeholder strong{color:white}
+.preview{width:100%;max-height:380px;object-fit:contain;border-radius:13px}
+.settings{display:grid;gap:13px}
+.field{display:grid;gap:7px;font-size:12px;color:#c3cce0;font-weight:760}
+input,select,textarea{
+  width:100%;border:1px solid var(--line);background:#0b1020;color:white;border-radius:12px;padding:12px;outline:none
+}
+textarea{min-height:94px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:rgba(115,167,255,.55);box-shadow:0 0 0 3px rgba(115,167,255,.08)}
+.result{
+  min-height:275px;border:1px solid var(--line);border-radius:17px;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;color:var(--muted);background:linear-gradient(135deg,rgba(168,140,255,.035),rgba(72,214,232,.02))
+}
+.result img,.result video{max-height:420px;border-radius:13px}
+.output-text{width:100%;white-space:pre-wrap;text-align:left;color:#e4eaf5;line-height:1.66}
+.status{min-height:20px;margin-top:10px;color:#9fb0cc;font-size:12px}.status.ok{color:#7ce0bb}.status.error{color:#ff9aaa}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.info{border:1px solid var(--line);border-radius:18px;padding:20px;background:rgba(255,255,255,.025)}
+.info .n{font-size:11px;color:#8ea1c4;font-weight:850;letter-spacing:.11em}
+.info h3{font-size:18px;margin:18px 0 8px}.info p{font-size:14px;color:var(--soft);line-height:1.65;margin:0}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.pricecard{border:1px solid var(--line);border-radius:20px;padding:22px;background:rgba(255,255,255,.028)}
+.pricecard.pop{border-color:rgba(115,167,255,.36);background:linear-gradient(180deg,rgba(115,167,255,.08),rgba(255,255,255,.025))}
+.price{font-size:34px;font-weight:850;letter-spacing:-.04em}.price small{font-size:13px;color:var(--muted);font-weight:650}
+.pricecard p,.pricecard li{font-size:13px;color:var(--soft);line-height:1.6}.pricecard ul{padding-left:18px}
+.faq{display:grid;gap:10px}
+details{border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025);padding:0 16px}
+summary{padding:16px 0;cursor:pointer;font-weight:760}details p{color:var(--soft);line-height:1.65;margin:0 0 16px}
+.notice{margin-top:14px;padding:13px 14px;border-radius:14px;border:1px solid rgba(247,201,107,.25);background:rgba(247,201,107,.06);color:#d8c9a4;font-size:12px;line-height:1.6}
+.footer{border-top:1px solid var(--line);margin-top:45px;padding:32px 0 44px;color:var(--muted)}
+.footerrow{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.footerlinks{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+.toast{position:fixed;right:18px;bottom:18px;z-index:200;display:none;max-width:360px;border:1px solid rgba(255,255,255,.15);background:#0d1323;color:white;padding:13px 15px;border-radius:14px;box-shadow:var(--shadow)}
+.toast.show{display:block}
+@media(max-width:980px){
+  .navlinks{display:none}.tools{grid-template-columns:repeat(2,1fr)}.studio-body{grid-template-columns:1fr}
+  .sidebar{border-right:0;border-bottom:1px solid var(--line);display:flex;gap:6px;overflow:auto}.tab{min-width:195px}.workspace{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .container{width:min(var(--max),calc(100% - 22px))}.nav{height:64px}.actions .ghost{display:none}.hero{padding:66px 0 44px}
+  h1{font-size:clamp(42px,15vw,64px)}.section{padding:42px 0}.head{display:block}.head p{margin-top:14px}
+  .tools,.grid3,.pricing{grid-template-columns:1fr}.tool.wide{grid-column:auto}.main{padding:14px}.panel-head{display:block}.model{display:inline-block;margin-top:12px}
+}
+</style>
+</head>
+<body>
+<header class="navbar">
+  <div class="container nav">
+    <a class="brand" href="#top"><span class="logo"></span><span>ProductEvol</span><span class="beta">Beta</span></a>
+    <nav class="navlinks"><a href="#tools">Tools</a><a href="#studio">Studio</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <div class="actions"><button class="btn small ghost" id="accountBtn">Account</button><a class="btn primary small" href="#studio">Start creating</a></div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span> ProductEvol Beta · AI commerce content</div>
+    <h1>AI <span class="gradient">Product Studio</span></h1>
+    <p><strong style="color:white">From one product photo to everything your store needs.</strong><br>Enhance product images, change backgrounds, create lifestyle scenes, build ads and social posts, write listings and turn products into short videos.</p>
+    <div class="hero-cta"><a class="btn primary" href="#studio">Open Product Studio →</a><a class="btn" href="#tools">Explore all 7 tools</a></div>
+    <div class="hero-note">Product-first workflow · Marketplace-ready formats · Mobile friendly · Built for independent sellers</div>
+  </div>
+</section>
+
+<section class="section" id="tools">
+<div class="container">
+  <div class="head">
+    <div><div class="kicker">Seven focused tools</div><h2>Everything needed to present and sell a product.</h2></div>
+    <p>ProductEvol combines the most common seller content tasks into one consistent workflow, so a single product can become a complete campaign asset set.</p>
+  </div>
+  <div class="tools">
+    <article class="tool wide" data-open="enhance"><div class="arrow">↗</div><div class="icon">✦</div><h3>Product Photo Enhance</h3><p>Improve sharpness, lighting and presentation while keeping the product recognizable.</p><div class="tags"><span class="tag">2× / 4×</span><span class="tag">Commercial finish</span><span class="tag">Image</span></div></article>
+    <article class="tool" data-open="background"><div class="arrow">↗</div><div class="icon">◫</div><h3>Background Change</h3><p>Remove or replace backgrounds with white studio, transparent, solid color or a custom prompt.</p><div class="tags"><span class="tag">White</span><span class="tag">Transparent</span><span class="tag">Custom</span></div></article>
+    <article class="tool" data-open="scene"><div class="arrow">↗</div><div class="icon">⌂</div><h3>Product Scene Creator</h3><p>Place products into studio, lifestyle, seasonal or premium editorial environments.</p><div class="tags"><span class="tag">Lifestyle</span><span class="tag">Studio</span><span class="tag">Seasonal</span></div></article>
+    <article class="tool" data-open="ad"><div class="arrow">↗</div><div class="icon">◩</div><h3>Product Ad Image Creator</h3><p>Create campaign visuals with deliberate composition, offer space and promotion-ready layouts.</p><div class="tags"><span class="tag">Campaign</span><span class="tag">Offer</span><span class="tag">Banner</span></div></article>
+    <article class="tool" data-open="social"><div class="arrow">↗</div><div class="icon">▦</div><h3>Social Post Creator</h3><p>Generate product-led creative for Instagram, TikTok, Pinterest and other channels.</p><div class="tags"><span class="tag">1:1</span><span class="tag">4:5</span><span class="tag">9:16</span></div></article>
+    <article class="tool" data-open="copy"><div class="arrow">↗</div><div class="icon">≡</div><h3>Product Description Generator</h3><p>Create titles, bullets, descriptions and SEO-friendly listing copy from factual product details.</p><div class="tags"><span class="tag">Title</span><span class="tag">Bullets</span><span class="tag">SEO</span></div></article>
+    <article class="tool wide" data-open="video"><div class="arrow">↗</div><div class="icon">▶</div><h3>Product-to-Short-Video</h3><p>Turn a strong product image into short-form motion for ads, product pages and social campaigns.</p><div class="tags"><span class="tag">5s / 10s</span><span class="tag">Motion prompt</span><span class="tag">Video</span></div></article>
+  </div>
+</div>
+</section>
+
+<section class="section" id="studio">
+<div class="container">
+  <div class="head">
+    <div><div class="kicker">ProductEvol Studio</div><h2>All seven creation interfaces in one workspace.</h2></div>
+    <p>Each tool has its own inputs, settings, generation action and result area. API routes are already structured in the frontend for backend connection.</p>
+  </div>
+  <div class="studio">
+    <div class="studio-top">
+      <div class="studio-title"><span class="logo" style="width:34px;height:34px"></span><div><strong>ProductEvol Studio</strong><small>7 tools · Beta interface</small></div></div>
+      <div class="actions"><span class="tag" id="credits">Credits: —</span><button class="btn small" id="refresh">Refresh</button></div>
+    </div>
+    <div class="studio-body">
+      <aside class="sidebar">
+        <button class="tab active" data-tool="enhance"><span class="tabico">✦</span>Photo Enhance</button>
+        <button class="tab" data-tool="background"><span class="tabico">◫</span>Background Change</button>
+        <button class="tab" data-tool="scene"><span class="tabico">⌂</span>Scene Creator</button>
+        <button class="tab" data-tool="ad"><span class="tabico">◩</span>Ad Image</button>
+        <button class="tab" data-tool="social"><span class="tabico">▦</span>Social Post</button>
+        <button class="tab" data-tool="copy"><span class="tabico">≡</span>Description</button>
+        <button class="tab" data-tool="video"><span class="tabico">▶</span>Short Video</button>
+      </aside>
+      <div class="main">
+
+        <section class="panel active" id="panel-enhance">
+          <div class="panel-head"><div><h3>Product Photo Enhance</h3><p>Improve clarity, light and presentation without changing the identity of the product.</p></div><span class="model">Enhancement API</span></div>
+          <div class="workspace">
+            <div class="card"><h4>Source photo</h4><div class="upload" data-upload="enhance"><input type="file" accept="image/*" data-file="enhance"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload a product photo</strong><br><small>JPG, PNG or WEBP</small></div></div><button class="btn primary block" style="margin-top:14px" data-generate="enhance">Enhance product photo</button><div class="status" id="status-enhance"></div></div>
+            <div class="settings"><div class="card"><h4>Settings</h4><label class="field">Upscale<select id="enhance-scale"><option value="2">2× — balanced</option><option value="4">4× — maximum detail</option></select></label><label class="field">Finish<select id="enhance-finish"><option value="natural">Natural</option><option value="crisp">Crisp commercial</option><option value="soft">Soft premium</option></select></label></div><div class="card"><h4>Result</h4><div class="result" id="result-enhance">Your enhanced image will appear here.</div></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-background">
+          <div class="panel-head"><div><h3>Background Change</h3><p>Remove the original background and replace it with a cleaner commercial presentation.</p></div><span class="model">Cutout + Edit API</span></div>
+          <div class="workspace">
+            <div class="card"><h4>Product image</h4><div class="upload" data-upload="background"><input type="file" accept="image/*" data-file="background"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload product image</strong></div></div><button class="btn primary block" style="margin-top:14px" data-generate="background">Change background</button><div class="status" id="status-background"></div></div>
+            <div class="settings"><div class="card"><h4>Background</h4><label class="field">Mode<select id="background-mode"><option value="white">Clean white studio</option><option value="transparent">Transparent</option><option value="color">Solid color</option><option value="custom">Custom prompt</option></select></label><label class="field">Custom prompt<textarea id="background-prompt" placeholder="Warm beige studio backdrop, soft floor shadow..."></textarea></label></div><div class="card"><h4>Result</h4><div class="result" id="result-background">Your new background will appear here.</div></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-scene">
+          <div class="panel-head"><div><h3>Product Scene Creator</h3><p>Build studio, lifestyle or seasonal environments around the real product.</p></div><span class="model">Product Edit API</span></div>
+          <div class="workspace">
+            <div class="card"><h4>Product image</h4><div class="upload" data-upload="scene"><input type="file" accept="image/*" data-file="scene"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload the product</strong></div></div><button class="btn primary block" style="margin-top:14px" data-generate="scene">Create product scene</button><div class="status" id="status-scene"></div></div>
+            <div class="settings"><div class="card"><h4>Scene direction</h4><label class="field">Style<select id="scene-style"><option>Premium studio</option><option>Lifestyle</option><option>Minimal editorial</option><option>Seasonal campaign</option><option>Luxury campaign</option></select></label><label class="field">Scene prompt<textarea id="scene-prompt" placeholder="On a pale stone pedestal, soft morning side light..."></textarea></label><label class="field">Aspect ratio<select id="scene-ratio"><option>1:1</option><option>4:5</option><option>3:2</option><option>16:9</option></select></label></div><div class="card"><h4>Result</h4><div class="result" id="result-scene">Your product scene will appear here.</div></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-ad">
+          <div class="panel-head"><div><h3>Product Ad Image Creator</h3><p>Create polished promotional compositions with headline and offer space.</p></div><span class="model">Campaign Image API</span></div>
+          <div class="workspace">
+            <div class="card"><h4>Product image</h4><div class="upload" data-upload="ad"><input type="file" accept="image/*" data-file="ad"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload product image</strong></div></div><button class="btn primary block" style="margin-top:14px" data-generate="ad">Create ad image</button><div class="status" id="status-ad"></div></div>
+            <div class="settings"><div class="card"><h4>Campaign</h4><label class="field">Goal<select id="ad-goal"><option>New product launch</option><option>Sale / offer</option><option>Premium brand</option><option>Seasonal promotion</option><option>Feature highlight</option></select></label><label class="field">Headline<input id="ad-headline" placeholder="Designed for everyday movement"></label><label class="field">Offer<input id="ad-offer" placeholder="Launch week · 20% off"></label><label class="field">Format<select id="ad-ratio"><option>4:5</option><option>1:1</option><option>16:9</option><option>9:16</option></select></label></div><div class="card"><h4>Result</h4><div class="result" id="result-ad">Your campaign visual will appear here.</div></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-social">
+          <div class="panel-head"><div><h3>Social Post Creator</h3><p>Turn a product into social-ready creative in channel-appropriate dimensions.</p></div><span class="model">Social Creative API</span></div>
+          <div class="workspace">
+            <div class="card"><h4>Product image</h4><div class="upload" data-upload="social"><input type="file" accept="image/*" data-file="social"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload product image</strong></div></div><button class="btn primary block" style="margin-top:14px" data-generate="social">Create social post</button><div class="status" id="status-social"></div></div>
+            <div class="settings"><div class="card"><h4>Social settings</h4><label class="field">Platform<select id="social-platform"><option>Instagram post</option><option>Instagram story</option><option>TikTok / Reels cover</option><option>Pinterest</option><option>Facebook</option></select></label><label class="field">Visual direction<select id="social-style"><option>Clean product focus</option><option>Bold promotional</option><option>Lifestyle editorial</option><option>Minimal luxury</option><option>Playful</option></select></label><label class="field">Message<textarea id="social-message" placeholder="New color just dropped. Lightweight, everyday, effortless."></textarea></label></div><div class="card"><h4>Result</h4><div class="result" id="result-social">Your social creative will appear here.</div></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-copy">
+          <div class="panel-head"><div><h3>Product Description Generator</h3><p>Create listing copy from factual product information without inventing unsupported claims.</p></div><span class="model">Text API</span></div>
+          <div class="workspace">
+            <div class="card"><h4>Product details</h4><div class="settings"><label class="field">Product name<input id="copy-name" placeholder="Everyday Canvas Tote"></label><label class="field">What is it?<textarea id="copy-details" placeholder="Material, size, color, features, use, care instructions..."></textarea></label><label class="field">Target customer<input id="copy-audience" placeholder="Commuters, students and everyday shoppers"></label><label class="field">Tone<select id="copy-tone"><option>Clear and premium</option><option>Friendly</option><option>Minimal</option><option>Luxury</option><option>Playful</option></select></label><label class="field">Output<select id="copy-output"><option>Full listing pack</option><option>Title only</option><option>Description only</option><option>5 bullets</option><option>SEO title + meta description</option></select></label></div><button class="btn primary block" style="margin-top:14px" data-generate="copy">Generate product copy</button><div class="status" id="status-copy"></div></div>
+            <div class="card"><h4>Generated copy</h4><div class="result" id="result-copy"><div class="output-text">Your generated title, bullets, description and SEO copy will appear here.</div></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-video">
+          <div class="panel-head"><div><h3>Product-to-Short-Video</h3><p>Animate a product image into a short controlled motion asset for ads and social content.</p></div><span class="model">Image-to-Video API</span></div>
+          <div class="workspace">
+            <div class="card"><h4>Product image</h4><div class="upload" data-upload="video"><input type="file" accept="image/*" data-file="video"><div class="placeholder"><div style="font-size:32px">⇧</div><strong>Upload product image</strong></div></div><button class="btn primary block" style="margin-top:14px" data-generate="video">Create short video</button><div class="status" id="status-video"></div></div>
+            <div class="settings"><div class="card"><h4>Motion</h4><label class="field">Duration<select id="video-duration"><option value="5">5 seconds</option><option value="10">10 seconds</option></select></label><label class="field">Motion style<select id="video-style"><option>Slow premium camera move</option><option>360-style product reveal</option><option>Soft push-in</option><option>Dynamic social ad</option><option>Floating studio reveal</option></select></label><label class="field">Motion prompt<textarea id="video-prompt" placeholder="Slow camera orbit, subtle product rotation, soft studio light..."></textarea></label><label class="field">Format<select id="video-ratio"><option>9:16</option><option>1:1</option><option>16:9</option></select></label></div><div class="card"><h4>Result</h4><div class="result" id="result-video">Your short product video will appear here.</div></div></div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+  <div class="notice"><strong>Backend connection note:</strong> this file contains the complete ProductEvol Beta frontend and all seven interfaces. The generation buttons are wired to ProductEvol-specific API paths. Those server routes still need to exist and point to the selected production models before real AI generation can work.</div>
+</div>
+</section>
+
+<section class="section" id="how">
+<div class="container">
+  <div class="head"><div><div class="kicker">Simple by design</div><h2>A complete seller workflow.</h2></div><p>Start with the real product, choose a focused content task, then export a polished asset for your store or campaign.</p></div>
+  <div class="grid3">
+    <div class="info"><div class="n">01 · UPLOAD</div><h3>Start from your real product</h3><p>Upload one clear product photo or enter the factual details needed for listing copy.</p></div>
+    <div class="info"><div class="n">02 · CREATE</div><h3>Choose one focused task</h3><p>Enhance, remove a background, create a scene, build an ad, make social content, write copy or generate motion.</p></div>
+    <div class="info"><div class="n">03 · EXPORT</div><h3>Use it where you sell</h3><p>Prepare content for product pages, marketplaces, ads and social channels with less tool switching.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="head"><div><div class="kicker">ProductEvol standard</div><h2>Useful over complicated.</h2></div><p>The studio is designed around clarity, product fidelity, strong commercial output and a low-friction seller workflow.</p></div>
+  <div class="grid3">
+    <div class="info"><div class="icon">◎</div><h3>Product fidelity first</h3><p>Interfaces are designed to preserve the product rather than turn it into a different object.</p></div>
+    <div class="info"><div class="icon">◇</div><h3>Commercially focused</h3><p>Every tool maps directly to a real seller need: listings, ads, social, scenes, descriptions and motion.</p></div>
+    <div class="info"><div class="icon">↘</div><h3>Low-friction workflow</h3><p>Each tool asks only for the inputs needed for that task and keeps the primary action obvious.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="pricing">
+<div class="container">
+  <div class="head"><div><div class="kicker">Beta credit packs</div><h2>Simple one-time credit packs.</h2></div><p>The pricing structure matches the existing Evol credit-pack approach and can be connected to ProductEvol checkout once the live merchant configuration is ready.</p></div>
+  <div class="pricing">
+    <div class="pricecard"><h3>Starter</h3><div class="price">€4.99 <small>one time</small></div><p>For trying a few ProductEvol workflows.</p><ul><li>20 credits</li><li>Access to all 7 tools</li><li>Download finished assets</li></ul><button class="btn block" data-buy="starter">Buy Starter</button></div>
+    <div class="pricecard pop"><span class="tag">Most flexible</span><h3 style="margin-top:13px">Creator</h3><div class="price">€11.99 <small>one time</small></div><p>For sellers creating content regularly.</p><ul><li>60 credits</li><li>Access to all 7 tools</li><li>Better value per credit</li></ul><button class="btn primary block" data-buy="creator">Buy Creator</button></div>
+    <div class="pricecard"><h3>Studio</h3><div class="price">€24.99 <small>one time</small></div><p>For stores with a larger content workload.</p><ul><li>150 credits</li><li>Access to all 7 tools</li><li>Best value per credit</li></ul><button class="btn block" data-buy="studio">Buy Studio</button></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="faq">
+<div class="container">
+  <div class="head"><div><div class="kicker">FAQ</div><h2>Before you create.</h2></div></div>
+  <div class="faq">
+    <details open><summary>What is ProductEvol?</summary><p>ProductEvol is an AI product-content studio for online sellers. Its seven tools cover photo enhancement, background changes, product scenes, ad imagery, social creative, product descriptions and short product video.</p></details>
+    <details><summary>Who is the beta for?</summary><p>Independent sellers, small brands and creators who need polished product content without a complicated stack of separate creative tools.</p></details>
+    <details><summary>Will ProductEvol always preserve the exact product?</summary><p>AI generation can sometimes alter visual details. ProductEvol should prioritize product fidelity, but every generated asset should be reviewed before publishing.</p></details>
+    <details><summary>Can I use the output commercially?</summary><p>Commercial-use wording should be synchronized with the final Terms of Service and the production model providers actually connected to the live service.</p></details>
+    <details><summary>What does Beta mean?</summary><p>The studio is usable while model selection, pricing, quality and workflows may still be refined based on reliability and user feedback.</p></details>
+  </div>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<div class="container footerrow">
+  <div class="brand"><span class="logo" style="width:31px;height:31px"></span><span>ProductEvol</span><span class="beta">Beta</span></div>
+  <div class="footerlinks"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/refunds">Refunds</a><a href="mailto:support@productevol.com">Support</a></div>
+  <div>© <span id="year"></span> ProductEvol</div>
+</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script>
+const API={
+  account:"/api/account",
+  enhance:"/api/product-enhance",
+  background:"/api/background-change",
+  scene:"/api/product-scene",
+  ad:"/api/product-ad",
+  social:"/api/social-post",
+  copy:"/api/product-description",
+  video:"/api/product-video",
+  checkout:"/api/checkout"
+};
+const state={files:{enhance:null,background:null,scene:null,ad:null,social:null,video:null}};
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const toast=$("#toast");
+function notify(m){toast.textContent=m;toast.classList.add("show");clearTimeout(notify.t);notify.t=setTimeout(()=>toast.classList.remove("show"),3200)}
+function setStatus(t,m,c=""){const el=$("#status-"+t);if(el){el.className="status "+c;el.textContent=m||""}}
+function openTool(t){$$(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tool===t));$$(".panel").forEach(p=>p.classList.toggle("active",p.id==="panel-"+t));$("#studio").scrollIntoView({behavior:"smooth",block:"start"})}
+$$(".tab").forEach(b=>b.onclick=()=>openTool(b.dataset.tool));$$("[data-open]").forEach(c=>c.onclick=()=>openTool(c.dataset.open));
+function fileReady(t,f){
+  if(!f||!f.type.startsWith("image/")){setStatus(t,"Please choose an image file.","error");return}
+  state.files[t]=f;const box=$(`[data-upload="${t}"]`);const url=URL.createObjectURL(f);
+  const ph=$(".placeholder",box);if(ph)ph.remove();let img=$("img.preview",box);if(!img){img=document.createElement("img");img.className="preview";box.appendChild(img)}img.src=url;setStatus(t,f.name+" ready.","ok")
+}
+$$("[data-file]").forEach(i=>i.onchange=e=>fileReady(i.dataset.file,e.target.files&&e.target.files[0]));
+function formFor(t){
+  if(t==="copy")return {name:$("#copy-name").value.trim(),details:$("#copy-details").value.trim(),audience:$("#copy-audience").value.trim(),tone:$("#copy-tone").value,output:$("#copy-output").value};
+  const d=new FormData();d.append("file",state.files[t]);
+  if(t==="enhance"){d.append("scale",$("#enhance-scale").value);d.append("finish",$("#enhance-finish").value)}
+  if(t==="background"){d.append("mode",$("#background-mode").value);d.append("prompt",$("#background-prompt").value)}
+  if(t==="scene"){d.append("style",$("#scene-style").value);d.append("prompt",$("#scene-prompt").value);d.append("ratio",$("#scene-ratio").value)}
+  if(t==="ad"){d.append("goal",$("#ad-goal").value);d.append("headline",$("#ad-headline").value);d.append("offer",$("#ad-offer").value);d.append("ratio",$("#ad-ratio").value)}
+  if(t==="social"){d.append("platform",$("#social-platform").value);d.append("style",$("#social-style").value);d.append("message",$("#social-message").value)}
+  if(t==="video"){d.append("duration",$("#video-duration").value);d.append("style",$("#video-style").value);d.append("prompt",$("#video-prompt").value);d.append("ratio",$("#video-ratio").value)}
+  return d
+}
+function mediaUrl(x){
+  if(!x)return null;if(typeof x==="string"&&/^https?:\/\//.test(x))return x;
+  if(Array.isArray(x)){for(const a of x){const u=mediaUrl(a);if(u)return u}}
+  if(typeof x==="object"){for(const k of ["output","url","image","image_url","video","video_url","result"]){if(x[k]!=null){const u=mediaUrl(x[k]);if(u)return u}}}
+  return null
+}
+async function generate(t,btn){
+  if(t!=="copy"&&!state.files[t]){setStatus(t,"Upload a product image first.","error");return}
+  if(t==="copy"&&!$("#copy-details").value.trim()){setStatus(t,"Add the factual product details first.","error");return}
+  const old=btn.textContent;btn.disabled=true;btn.textContent="Creating…";setStatus(t,"Sending your request…");
+  try{
+    const payload=formFor(t), opts=t==="copy"?{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}:{method:"POST",body:payload};
+    const res=await fetch(API[t],opts), text=await res.text();let data={};try{data=text?JSON.parse(text):{}}catch{data={message:text}}
+    if(!res.ok)throw new Error(data.error||data.message||`Request failed (${res.status})`);
+    const out=$("#result-"+t);out.innerHTML="";
+    if(t==="copy"){
+      const val=data.text||data.output||data.result||"";const div=document.createElement("div");div.className="output-text";div.textContent=typeof val==="string"?val:JSON.stringify(val,null,2);out.appendChild(div)
+    }else{
+      const url=mediaUrl(data);if(!url)throw new Error("The server returned no usable media URL.");
+      if(t==="video"){const v=document.createElement("video");v.controls=true;v.playsInline=true;v.src=url;out.appendChild(v)}
+      else{const i=document.createElement("img");i.src=url;i.alt="ProductEvol result";out.appendChild(i)}
+      const a=document.createElement("a");a.className="btn small";a.style.marginTop="12px";a.href=url;a.target="_blank";a.rel="noopener";a.textContent="Open result";out.appendChild(a)
+    }
+    setStatus(t,"Done. Review the result before publishing.","ok");loadAccount()
+  }catch(e){setStatus(t,e.message||"Something went wrong.","error")}
+  finally{btn.disabled=false;btn.textContent=old}
+}
+$$("[data-generate]").forEach(b=>b.onclick=()=>generate(b.dataset.generate,b));
+async function loadAccount(){try{const r=await fetch(API.account);if(!r.ok)throw 0;const d=await r.json();$("#credits").textContent="Credits: "+(Number.isFinite(+d.credits)?d.credits:"—")}catch{$("#credits").textContent="Credits: —"}}
+$("#refresh").onclick=loadAccount;$("#accountBtn").onclick=()=>notify("Connect this button to your ProductEvol sign-in/account flow.");
+$$("[data-buy]").forEach(b=>b.onclick=async()=>{const old=b.textContent;b.disabled=true;b.textContent="Opening checkout…";try{const r=await fetch(API.checkout,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pack:b.dataset.buy})});const d=await r.json().catch(()=>({}));if(!r.ok||!d.url)throw new Error(d.error||"Checkout is not connected yet.");location.href=d.url}catch(e){notify(e.message)}finally{b.disabled=false;b.textContent=old}});
+$("#year").textContent=new Date().getFullYear();loadAccount();
+</script>
+</body>
+</html>
